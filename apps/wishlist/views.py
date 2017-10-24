@@ -41,11 +41,8 @@ def logout(request):
 
 def wishlist(request):
     items = Item.objects.all()
-    # items_belong_this = Item.objects.first().wished_by
     items_belong_this = Item.objects.all()
     print items_belong_this
-    # items_belong_this = Item.objects.filter(added_by_id=request.session['login_status']['id'])
-    # print items
     context = {
         'items':items,
         'items_belong_this': items_belong_this
@@ -80,3 +77,10 @@ def delete_item(request):
     if request.method == 'POST':
         Item.objects.get(id=request.POST['item_id']).delete()
     return redirect('/wishlist')
+
+def display_item(request, item_id):
+    item = Item.objects.get(id=item_id)
+    context = {
+        'item':item
+    }
+    return render(request, 'wishlist/item_detail.html', context)
