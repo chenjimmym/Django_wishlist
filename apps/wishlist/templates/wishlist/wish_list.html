@@ -25,7 +25,7 @@
                                     {% if sub.id == request.session.login_status.id %}
                                         <td><a href="/wish_items/{{item.id}}">{{item.itemname}}</a></td>
                                         <td>{{item.added_by.name}}</td>
-                                        <td>{{item.created_at}}</td>
+                                        <td>{{item.created_at|date:"M d, Y"}}</td>
                                         {% if item.added_by_id == request.session.login_status.id %}
                                             <td>
                                                 <form action="/delete_item" method="post">
@@ -62,7 +62,7 @@
                             <tr>
                                 <td><a href="/wish_items/{{item.id}}">{{item.itemname}}</a></td>
                                 <td>{{item.added_by.name}}</td>
-                                <td>{{item.created_at}}</td>
+                                <td>{{item.created_at|date:"M d, Y"}}</td>
                                 <td>
                                     <form action="/add_to_wishlist" method="post">
                                         {% csrf_token %}
