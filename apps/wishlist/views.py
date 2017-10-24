@@ -75,3 +75,8 @@ def remove_from_wishlist(request):
         this_item = Item.objects.get(id=request.POST['item_id'])
         this_item.wished_by.remove(this_user)
     return redirect('/wishlist')
+
+def delete_item(request):
+    if request.method == 'POST':
+        Item.objects.get(id=request.POST['item_id']).delete()
+    return redirect('/wishlist')

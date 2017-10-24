@@ -11,4 +11,5 @@ urlpatterns = [
     url(r'^add$', views.add),
     url(r'^add_to_wishlist$', views.add_to_wishlist),
     url(r'^remove_from_wishlist$', views.remove_from_wishlist),
+    url(r'^delete_item$', views.delete_item),
 ]
